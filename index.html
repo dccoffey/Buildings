@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Residential Lifecycle Cost Explorer</title>
+<link rel="stylesheet" href="assets/styles.css">
+<style>
+  .hero { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); color: #fff; padding: 3rem 2rem 2.5rem; text-align: center; }
+  .hero h1 { font-size: 2.2rem; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 0.5rem; }
+  .hero p { font-size: 1.05rem; color: #b0bec5; max-width: 700px; margin: 0 auto 1.5rem; line-height: 1.6; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; max-width: 1000px; margin: -2rem auto 3rem; padding: 0 1.5rem; }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.8rem; text-decoration: none; color: var(--text); transition: all 0.2s; box-shadow: 0 2px 8px rgba(0,0,0,0.06); display: flex; flex-direction: column; }
+  .card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.1); border-color: var(--primary); }
+  .card-icon { font-size: 2.5rem; margin-bottom: 0.8rem; }
+  .card h2 { font-size: 1.2rem; margin-bottom: 0.4rem; }
+  .card p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.5; flex: 1; }
+  .card .card-action { margin-top: 1rem; color: var(--primary); font-weight: 600; font-size: 0.88rem; }
+  .about-section { max-width: 900px; margin: 0 auto 3rem; padding: 0 1.5rem; }
+  .about-section h2 { font-size: 1.4rem; margin-bottom: 0.8rem; }
+  .about-section p { font-size: 0.92rem; color: var(--text-muted); margin-bottom: 0.8rem; }
+  .arch-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0; }
+  .arch-card { background: #f8f9fa; border: 1px solid var(--border); border-radius: 8px; padding: 1.2rem; }
+  .arch-card h3 { font-size: 1rem; margin-bottom: 0.5rem; color: var(--primary-dark); }
+  .arch-card p { font-size: 0.82rem; margin: 0; }
+  footer { background: var(--nav-bg); color: #8898aa; text-align: center; padding: 1.5rem; font-size: 0.8rem; }
+  footer a { color: #6ea8fe; }
+</style>
+</head>
+<body>
+
+<nav class="nav-bar">
+  <span class="logo">Residential Lifecycle Costs</span><span style="color:#e74c3c;font-size:1.1rem;font-weight:bold;margin-left:1rem;letter-spacing:0.5px">DRAFT, Work in progress 2/20</span>
+  <a href="index.html" class="active">Home</a>
+  <a href="sankey.html">Sankey</a>
+  <a href="friction.html">Friction Map</a>
+  <a href="sources.html">Sources &amp; Methods</a>
+</nav>
+
+<div class="hero">
+  <h1>Residential Lifecycle Cost Explorer</h1>
+  <p>Interactive visualization of 30-year owner costs for single-family and multifamily residential buildings. All values sourced from federal data, industry surveys, and peer-reviewed literature. Every number is traceable to its source.</p>
+</div>
+
+<div class="cards">
+  <a href="sankey.html" class="card">
+    <div class="card-icon">&#128200;</div>
+    <h2>Owner Cost Sankey</h2>
+    <p>Explore how the total 30-year owner cost breaks down across land, construction, financing, operations, and replacements. Toggle between single-family and multifamily, coarse and fine detail, and discounted vs. undiscounted views.</p>
+    <div class="card-action">Open Sankey &rarr;</div>
+  </a>
+  <a href="friction.html" class="card">
+    <div class="card-icon">&#9881;</div>
+    <h2>Lifecycle Friction Map</h2>
+    <p>Visualize where time, cost, and coordination friction occurs across the building lifecycle. See which processes have the highest rework rates, longest queue times, and greatest uncertainty.</p>
+    <div class="card-action">Open Friction Map &rarr;</div>
+  </a>
+  <a href="sources.html" class="card">
+    <div class="card-icon">&#128218;</div>
+    <h2>Sources &amp; Methods</h2>
+    <p>Full documentation of archetypes, assumptions, formulas, data sources, and the complete provenance table. Every number in the visualizations links back to a specific source with page-level locators.</p>
+    <div class="card-action">View Methods &rarr;</div>
+  </a>
+</div>
+
+<div class="about-section">
+  <h2>Building Archetypes</h2>
+  <div class="arch-cards">
+    <div class="arch-card">
+      <h3>&#127968; Single-Family (SF)</h3>
+      <p><strong>2,200 ft&sup2;</strong> | 2-story wood-frame | Slab-on-grade | 3BR / 2.5BA<br>
+      Purchase price: $420,000 | Based on Census median new SF home (2023)</p>
+    </div>
+    <div class="arch-card">
+      <h3>&#127970; Multifamily (MF)</h3>
+      <p><strong>100 units</strong> | Garden-style, 3-story Type V-A | 950 ft&sup2;/unit<br>
+      Dev. cost: $300,000/unit | Surface parking | Wood-frame construction</p>
+    </div>
+  </div>
+
+  <h2>Key Features</h2>
+  <ul style="font-size:0.92rem;color:var(--text-muted);padding-left:1.5rem">
+    <li><strong>Fully interactive:</strong> Toggle SF/MF, coarse/fine detail, discounted/undiscounted, and adjustable discount rate (1-7%)</li>
+    <li><strong>Traceable:</strong> Every number is clickable and links to a provenance table with source, formula, and bibliography</li>
+    <li><strong>Self-contained:</strong> No external network calls; all JS/CSS bundled locally for offline use and GitHub Pages deployment</li>
+    <li><strong>Transparent:</strong> Methods &amp; Assumptions fully documented; friction score formula is explicit and interpretable</li>
+    <li><strong>Research-grounded:</strong> Sources include U.S. Census, EIA, NAHB, NMHC, NIST, CII, McKinsey, and peer-reviewed literature</li>
+  </ul>
+
+  <h2>How to Use</h2>
+  <ol style="font-size:0.92rem;color:var(--text-muted);padding-left:1.5rem">
+    <li>Start with the <a href="sankey.html">Sankey diagram</a> to understand cost magnitude and proportions</li>
+    <li>Use the <a href="friction.html">Friction Map</a> to identify where process friction adds cost and delay</li>
+    <li>Click any number to see its source and calculation in the <a href="sources.html">provenance table</a></li>
+    <li>Use the <a href="sources.html">Methods page</a> to understand all assumptions and limitations</li>
+  </ol>
+</div>
+
+<footer>
+  <p>Residential Lifecycle Cost Explorer | Data basis: 2024 USD | Sources: Census, EIA, NAHB, NMHC, NIST, CII, ASHRAE</p>
+  <p><a href="sources.html#limitations">Limitations</a> | <a href="sources.html">Full Methodology</a></p>
+</footer>
+
+</body>
+</html>
