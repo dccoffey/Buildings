@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Residential Lifecycle Cost Explorer</title>
+<title>Lifecycle Cost Explorer</title>
 <link rel="stylesheet" href="assets/styles.css">
 <style>
   .hero { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); color: #fff; padding: 3rem 2rem 2.5rem; text-align: center; }
@@ -19,7 +19,8 @@
   .about-section { max-width: 900px; margin: 0 auto 3rem; padding: 0 1.5rem; }
   .about-section h2 { font-size: 1.4rem; margin-bottom: 0.8rem; }
   .about-section p { font-size: 0.92rem; color: var(--text-muted); margin-bottom: 0.8rem; }
-  .arch-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0; }
+  .arch-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1.5rem 0; }
+  @media (max-width: 768px) { .arch-cards { grid-template-columns: 1fr; } }
   .arch-card { background: #f8f9fa; border: 1px solid var(--border); border-radius: 8px; padding: 1.2rem; }
   .arch-card h3 { font-size: 1rem; margin-bottom: 0.5rem; color: var(--primary-dark); }
   .arch-card p { font-size: 0.82rem; margin: 0; }
@@ -30,7 +31,7 @@
 <body>
 
 <nav class="nav-bar">
-  <span class="logo">Residential Lifecycle Costs</span><span style="color:#e74c3c;font-size:1.1rem;font-weight:bold;margin-left:1rem;letter-spacing:0.5px">DRAFT, Work in progress 2/20</span>
+  <span class="logo">Lifecycle Costs</span><span style="color:#e74c3c;font-size:1.1rem;font-weight:bold;margin-left:1rem;letter-spacing:0.5px">DRAFT, Work in progress 2/20</span>
   <a href="index.html" class="active">Home</a>
   <a href="sankey.html">Sankey</a>
   <a href="friction.html">Friction Map</a>
@@ -38,15 +39,15 @@
 </nav>
 
 <div class="hero">
-  <h1>Residential Lifecycle Cost Explorer</h1>
-  <p>Interactive visualization of 30-year owner costs for single-family and multifamily residential buildings. All values sourced from federal data, industry surveys, and peer-reviewed literature. Every number is traceable to its source.</p>
+  <h1>Lifecycle Cost Explorer</h1>
+  <p>Interactive visualization of lifecycle owner costs for single-family homes, multifamily apartments, and K-8 schools. All values sourced from federal data, industry surveys, and peer-reviewed literature. Every number is traceable to its source.</p>
 </div>
 
 <div class="cards">
   <a href="sankey.html" class="card">
     <div class="card-icon">&#128200;</div>
-    <h2>Owner Cost Sankey</h2>
-    <p>Explore how the total 30-year owner cost breaks down across land, construction, financing, operations, and replacements. Toggle between single-family and multifamily, coarse and fine detail, and discounted vs. undiscounted views.</p>
+    <h2>Lifecycle Cost Sankey</h2>
+    <p>Explore how total lifecycle costs break down across land, construction, financing, operations, and replacements. Toggle between SF, MF, and School archetypes with coarse/fine detail and discounted/undiscounted views.</p>
     <div class="card-action">Open Sankey &rarr;</div>
   </a>
   <a href="friction.html" class="card">
@@ -76,11 +77,16 @@
       <p><strong>100 units</strong> | Garden-style, 3-story Type V-A | 950 ft&sup2;/unit<br>
       Dev. cost: $300,000/unit | Surface parking | Wood-frame construction</p>
     </div>
+    <div class="arch-card">
+      <h3>&#127979; K-8 School</h3>
+      <p><strong>75,000 ft&sup2;</strong> | 1&ndash;2 story steel/masonry | ~500 students<br>
+      50-year district cost: $73.2M | GO bond financing | Public bidding</p>
+    </div>
   </div>
 
   <h2>Key Features</h2>
   <ul style="font-size:0.92rem;color:var(--text-muted);padding-left:1.5rem">
-    <li><strong>Fully interactive:</strong> Toggle SF/MF, coarse/fine detail, discounted/undiscounted, and adjustable discount rate (1-7%)</li>
+    <li><strong>Fully interactive:</strong> Toggle SF/MF/School, coarse/fine detail, discounted/undiscounted, and adjustable discount rate (1-7%)</li>
     <li><strong>Traceable:</strong> Every number is clickable and links to a provenance table with source, formula, and bibliography</li>
     <li><strong>Self-contained:</strong> No external network calls; all JS/CSS bundled locally for offline use and GitHub Pages deployment</li>
     <li><strong>Transparent:</strong> Methods &amp; Assumptions fully documented; friction score formula is explicit and interpretable</li>
@@ -97,7 +103,7 @@
 </div>
 
 <footer>
-  <p>Residential Lifecycle Cost Explorer | Data basis: 2024 USD | Sources: Census, EIA, NAHB, NMHC, NIST, CII, ASHRAE</p>
+  <p>Lifecycle Cost Explorer | Data basis: 2024 USD | Sources: Census, EIA, NAHB, NMHC, NIST, CII, ASHRAE, RSMeans, MSRB, GFOA</p>
   <p><a href="sources.html#limitations">Limitations</a> | <a href="sources.html">Full Methodology</a></p>
 </footer>
 
